@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Qbo.Perfil"
+             NavigationPage.HasBackButton="False"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <StackLayout Orientation="Horizontal" HeightRequest="200">
+                <Image x:Name="pfp" Aspect="AspectFit" WidthRequest="100" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="cambiaPfp" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Label FontSize="16" Grid.Column="0" Grid.Row="0" Text="Nombre de usuario" />
+                    <Label FontSize="16" x:Name="username" Grid.Column="1" Grid.Row="0" />
+                    <Label FontSize="16" Grid.Column="0" Grid.Row="1" Text="Email" />
+                    <Label FontSize="16" x:Name="email" Grid.Column="1" Grid.Row="1" />
+                    <Label FontSize="16" Grid.Column="0" Grid.Row="2" Text="Desde" />
+                    <Label FontSize="16" x:Name="since" Grid.Column="1" Grid.Row="2" />
+                </Grid>
+            </StackLayout>
+
+            <ListView x:Name="listaPlataformas" Header="Tus plataformas" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Background="#FFF1F9" HeightRequest="300">
+                                <!--<Image Source="{Binding plaNo}" BackgroundColor="#F3158D" WidthRequest="50" HeightRequest="50" />-->
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                                    <Label Text="{Binding nombre}" VerticalOptions="CenterAndExpand">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="irASitio" CommandParameter="{Binding siteUrl}"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                    <Label Text="{Binding precio, StringFormat='{0} € / mes'}" />
+                                    <Image Source="botebasura.png">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="removePlataforma" CommandParameter="{Binding .}"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Añade plataformas" Clicked="addPlataforma"></Button>
+            <ListView x:Name="listaFavoritos" Header="Tus Favoritos" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Background="#FFF1F9" HeightRequest="300">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="goToDetail" CommandParameter="{Binding .}"/>
+                                </StackLayout.GestureRecognizers>
+                                <Image Source="{Binding imagen}" BackgroundColor="#F3158D" WidthRequest="50" HeightRequest="50" />
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding titulo}" VerticalOptions="CenterAndExpand" />
+                                    <Label Text="{Binding director, StringFormat='Director(es): {0}'}" />
+                                </StackLayout>
+                                <Image Source="eliminar_favorito.png">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="removeFav" CommandParameter="{Binding .}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Qbo.Detail">
+    <NavigationPage.TitleView>
+        <Label Text="{Binding titulo}" HorizontalTextAlignment="Center"/>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <StackLayout Orientation="Horizontal" BackgroundColor="#FFF1F9" HeightRequest="250">
+                <Image Source="{Binding imagen}" Aspect="AspectFill" />
+                <StackLayout Orientation="Vertical">
+                    <Button x:Name="Fav" Text="Favorito" HorizontalOptions="Start" Clicked="modificarFavorito"/>
+                   
+                    <Label Text="Calificacion:" HorizontalOptions="Center" />
+                    <Label Text="{Binding calificacion}"  TextColor="Black" FontSize="40" HorizontalOptions="Center" />
+                    <StackLayout Orientation="Horizontal" Spacing="5">
+                        <Image Source="" x:Name="star1" />                      
+                        <Image Source="star_half.png" x:Name="star2" />
+                        <Image Source="no_star.png" x:Name="star3" />
+                        <Image Source="star.png" x:Name="star4" />
+                        <Image Source="star.png" x:Name="star5" />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+           
+            <BoxView HeightRequest="1" BackgroundColor="Black" />
+
+            <ScrollView>
+                <StackLayout Orientation="Vertical" BackgroundColor="#FFF1F9">
+
+                    <Label Text="Pelicula / Series" />
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout Orientation="Vertical" WidthRequest="500">
+                            <Label Text="Titulo: " />
+                            <Label Text="Director: " />
+                            <Label Text="Duracion: " />
+                            <Label Text="Etiquetas: " />
+                            <Label Text="Reparto: " />
+                            <Label Text="Sinopsis: " />
+                            
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="{Binding titulo}" />
+                            <Label Text="{Binding director}" />
+                            <Label Text="{Binding duracion}" />
+                            <Label Text="{Binding etiquetas}" />
+                            <Label Text="{Binding reparto}" />
+                            <Label Text="{Binding sinopsis}" />
+                            
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

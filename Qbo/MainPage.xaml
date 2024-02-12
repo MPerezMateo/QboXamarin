@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Qbo.MainPage"
+             NavigationPage.HasBackButton="False"
+             NavigationPage.HasNavigationBar="False">
+
+    <ScrollView>
+        <StackLayout >
+            <Frame BackgroundColor="#000000" Padding="24" CornerRadius="0">
+                <Label Text="Bienvenid@ a Qbo" HorizontalTextAlignment="Center" TextColor="White" FontSize="45"/>
+            </Frame>
+        
+            <Image Source="logotipo4.png" 
+                   HeightRequest="250" 
+                   Margin="20,35,20,20"
+                   Aspect="Fill"
+                   WidthRequest="{OnPlatform iOS=300, Android=250}"
+                   HorizontalOptions="Center" />
+
+            <Label Text="BUSCA ENTRE TUS PLATAFORMAS &#10;&#9; TU CONTENIDO FAVORITO" HorizontalTextAlignment="Center" TextColor="#000000" FontSize="26" />
+            <Label Text="Inica sesión con email o nombre de usuario" HorizontalTextAlignment="Center"/>
+            <Entry x:Name="entryUser" Placeholder="Nombre de usuario o email" />
+            <Entry x:Name="entryPass" Placeholder="Contraseña" IsPassword="True" />
+
+            <Button Text="Iniciar Sesión"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="Center"
+                    Clicked="login" 
+                    BackgroundColor="#18308b"
+                    TextColor="White"/>
+            <Label Text="Si no tienes cuenta " HorizontalTextAlignment="Center" TextColor="#FF4081"/>
+        
+            <!-- Queda pendiente una recuperación de contraseña -->
+            <Button Text="Regístrate aquí"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="Center"
+                    Clicked="registro" 
+                    BackgroundColor="#18308b" 
+                    TextColor="White"/>
+
+            <!--<Button Text="Pulsa aqui para ingresar!"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="Center"
+                    Clicked="OnButtonClicked" />-->
+
+
+            <Label x:Name="msgSQL" Text="" HorizontalTextAlignment="Center" TextColor="Black" FontSize="16"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

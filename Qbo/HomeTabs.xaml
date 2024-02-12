@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:Qbo"
+            x:Class="Qbo.HomeTabs"
+            NavigationPage.HasBackButton="False"
+            NavigationPage.HasNavigationBar="False">
+
+    <NavigationPage Title="Búsquedas">
+        <x:Arguments>
+            <local:Home />
+        </x:Arguments>
+    </NavigationPage>
+    
+    <NavigationPage Title="Perfil">
+        <x:Arguments>
+            <local:Perfil />
+        </x:Arguments>
+    </NavigationPage>
+</TabbedPage>

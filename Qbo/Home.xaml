@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Qbo.Home"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Vertical">
+                <SearchBar x:Name="searchBar" Placeholder="Busca películas o series" SearchButtonPressed="busca"  />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Picker Grid.Column="0" Grid.Row="0" x:Name="platPicker" ItemsSource="{Binding plataformas}"
+                            ItemDisplayBinding="{Binding nombre}" SelectedItem="{Binding plataformaSeleccionada}"
+                            SelectedIndexChanged="plataformaSeleccion"/>
+                    <Picker Grid.Column="1" Grid.Row="0" x:Name="etqPicker" ItemsSource="{Binding generos}"
+                            SelectedItem="{Binding generoSeleccionado}" SelectedIndexChanged="etiquetaSeleccion"/>
+                    <Picker Grid.Column="0" Grid.Row="1" x:Name="mediaPicker" ItemsSource="{Binding media}"
+                            SelectedItem="{Binding mediaSeleccionado}" SelectedIndexChanged="mediaSeleccion"/>
+                    <Picker Grid.Column="1" Grid.Row="1" x:Name="orderPicker" ItemsSource="{Binding criterios}"
+                            SelectedItem="{Binding criterioSeleccionado}" SelectedIndexChanged="criterioSeleccion"/>
+                </Grid>
+            </StackLayout>
+
+            <ListView x:Name="listaContenidos" Header="Contenidos" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Background="#FFF1F9" HeightRequest="300">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="goToDetail" CommandParameter="{Binding .}"/>
+                                </StackLayout.GestureRecognizers>
+
+                                <Image Source="{Binding imagen}" BackgroundColor="Black" WidthRequest="50" HeightRequest="50" />
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding titulo}" VerticalOptions="CenterAndExpand" />
+                                    <Label Text="{Binding director, StringFormat='Director(es): {0}'}" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

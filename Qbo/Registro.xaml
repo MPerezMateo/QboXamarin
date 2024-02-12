@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Qbo.Registro">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Introduce tus datos para registrarte"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            
+            <Entry x:Name="entryEmail" Placeholder="Email" />
+            <Entry x:Name="entryUserName" Placeholder="Nombre de usuario" />
+            <Entry x:Name="entryPassword" IsPassword="True" Placeholder="Contraseña" />
+            <Label x:Name="entryErrMsg" IsVisible="False"  TextColor="Red" />
+
+            <Button Text="Registrarse"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="Center"
+                    Clicked="registrarse" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
